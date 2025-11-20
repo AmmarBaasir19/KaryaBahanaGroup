@@ -1,8 +1,6 @@
 import pandas as pd 
 import streamlit as st
 from streamlit_calendar import calendar
-from SrcNew.Model.DatabaseConfig import DatabaseConfig
-
 
 class MainCalender:
     def run(self):
@@ -216,11 +214,10 @@ class MainCalender:
         """
 
         ## Connect To Database to Get Calender Data 
-        df = DatabaseConfig().get_calender_db() 
+        df = pd.read_csv("home/cortex/Medallion_Hub/Karya_Bahana_Apps/Calender_DB/Data_Calender.csv")
         df['start'] = pd.to_datetime(df['production_date']).dt.strftime('%Y-%m-%d')
-        df = df.drop(columns=['production_date'])
 
-        calender_events = df.to_dict(orient="records")
+        calender_events = df.to_dict(orient="records") 
         for event in calender_events:
             event['title'] = f"✅ {event.get('title', '')}"  
         

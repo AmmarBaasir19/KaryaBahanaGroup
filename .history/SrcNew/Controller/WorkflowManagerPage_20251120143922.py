@@ -26,6 +26,7 @@ class WorkflowManagerPage:
     def render_beranda(self):
         """ This Function will be Processing Beranda Page """
         try : 
+            MergeDatabase() 
             MainCalender().run() 
 
         except Exception as e : 
@@ -49,7 +50,6 @@ class WorkflowManagerPage:
                 time.sleep(1) 
                 my_bar.empty() 
 
-                
                 ## Read Database to Generate Reports
                 col_df1 = ['model', 'part_no', 'part_name', 'shift', 'tahun', 'bulan', 'tanggal', 'checked', 'ok', 'repair', 'scrap']
                 col_df2 = ['model', 'part_no', 'part_name', 'shift', 'total_repair', 'tahun', 'bulan', 'tanggal']

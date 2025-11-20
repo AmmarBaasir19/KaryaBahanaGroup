@@ -216,11 +216,15 @@ class MainCalender:
         """
 
         ## Connect To Database to Get Calender Data 
+        #df = pd.read_csv("home/cortex/Medallion_Hub/Karya_Bahana_Apps/Calender_DB/Data_Calender.csv")
         df = DatabaseConfig().get_calender_db() 
-        df['start'] = pd.to_datetime(df['production_date']).dt.strftime('%Y-%m-%d')
-        df = df.drop(columns=['production_date'])
+        print(f"Ini df main_calender : {df.info()}")
+        df['start'] = df['production_date'].strftime("%Y-%m-%d")
+        print(f"Ini df main_calender Kedua : {df}")
+        print(f"Ini df main_calender Kedua : {df.info()}")
+        #df['start'] = pd.to_datetime(df['production_date']).dt.strftime('%Y-%m-%d')
 
-        calender_events = df.to_dict(orient="records")
+        calender_events = df.to_dict(orient="records") 
         for event in calender_events:
             event['title'] = f"✅ {event.get('title', '')}"  
         

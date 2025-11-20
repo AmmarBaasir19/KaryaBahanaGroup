@@ -169,38 +169,3 @@ class DatabaseConfig:
         except Exception as e : 
             st.error(f"Error in class DatabaseConfig (get_database): {e}")    
     
-    def get_calender_db(self):
-        """"""
-        try : 
-            query = text("""
-                         WITH combined_calender AS (
-                            SELECT 
-                                title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date
-                            FROM 
-                                bronze_layer.fd_noninline
-                            WHERE
-                                title IS NOT NULL
-        
-                            UNION ALL
-
-                            SELECT
-                                title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date
-                            FROM
-                                bronze_layer.fpd
-                            WHERE
-                                title IS NOT NULL
-                         )
-
-                        SELECT
-                            DISTINCT title, production_date
-                        FROM 
-                            combined_calender;
-                         """)
-            
-            df = pd.read_sql_query(sql=query, con=self.connect_to_db())
-
-            return df
-        
-        except Exception as e : 
-            st.error(f"Error in class DatabaseConfig (get_calender_db): {e}")
-    

@@ -8,7 +8,7 @@ class ControllerReports:
             return pd.merge(
                 df1, df2,
                 on=['Model', 'Part No', 'Part Name', 'Tahun', 'Bulan', 'Tanggal', 'Shift'],
-                how='outer'
+                how='inner'
             )
         
         except Exception as e : 

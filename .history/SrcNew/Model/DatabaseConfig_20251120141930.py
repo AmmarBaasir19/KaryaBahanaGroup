@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st 
 from sqlalchemy import create_engine, text
 from sqlalchemy.types import Integer, String, Float, Date, DateTime, Boolean
 
@@ -133,7 +132,7 @@ class DatabaseConfig:
 
         return dtype_users_activity 
     
-    def connect_to_db(self):
+    def connect_to_db():
         """"""
         try:
             engine = create_engine('postgresql+psycopg2://adminkbbkbu:adminkbbkbu_io@localhost:5432/kb_group',
@@ -143,64 +142,6 @@ class DatabaseConfig:
             return connection
 
         except Exception as e:  
-            st.error(f"An error occurred: {e}")
+            print(f"An error occurred: {e}")
     
-    def get_database(self, start_date: str, end_date: str, db_name: str, col_name: list) -> pd.DataFrame:
-        """"""
-        try : 
-            if isinstance(col_name, list):
-                columns = ", ".join(col_name)
-            else : 
-                columns = col_name
-
-            template_query = text(f"""
-                                SELECT 
-                                    {columns},
-                                    MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date 
-                                FROM 
-                                    bronze_layer.{db_name}
-                                WHERE
-                                    MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) BETWEEN :start AND :end;
-                                """)
-            df = pd.read_sql_query(sql=template_query, con=self.connect_to_db(), params={'start' :start_date, 'end' :end_date})
-
-            return df
-    
-        except Exception as e : 
-            st.error(f"Error in class DatabaseConfig (get_database): {e}")    
-    
-    def get_calender_db(self):
-        """"""
-        try : 
-            query = text("""
-                         WITH combined_calender AS (
-                            SELECT 
-                                title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date
-                            FROM 
-                                bronze_layer.fd_noninline
-                            WHERE
-                                title IS NOT NULL
-        
-                            UNION ALL
-
-                            SELECT
-                                title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date
-                            FROM
-                                bronze_layer.fpd
-                            WHERE
-                                title IS NOT NULL
-                         )
-
-                        SELECT
-                            DISTINCT title, production_date
-                        FROM 
-                            combined_calender;
-                         """)
-            
-            df = pd.read_sql_query(sql=query, con=self.connect_to_db())
-
-            return df
-        
-        except Exception as e : 
-            st.error(f"Error in class DatabaseConfig (get_calender_db): {e}")
     

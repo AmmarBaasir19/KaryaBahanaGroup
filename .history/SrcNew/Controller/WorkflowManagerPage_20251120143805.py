@@ -26,6 +26,7 @@ class WorkflowManagerPage:
     def render_beranda(self):
         """ This Function will be Processing Beranda Page """
         try : 
+            MergeDatabase() 
             MainCalender().run() 
 
         except Exception as e : 
@@ -49,7 +50,60 @@ class WorkflowManagerPage:
                 time.sleep(1) 
                 my_bar.empty() 
 
+                if not os.path.exists(ControllerPath().folder_output_fd): 
+                    os.makedirs(ControllerPath().folder_output_fd)  
+                else : 
+                    for file_name in os.listdir(ControllerPath().folder_output_fd): 
+                        file_path = os.path.join(ControllerPath().folder_output_fd, file_name) 
+                        try : 
+                            if os.path.isfile(ControllerPath().folder_path_fd_noninline):
+                                os.remove(ControllerPath().folder_path_fd_noninline)
+                        
+                        except Exception as e : 
+                            st.error(f"Error in Processing Remove File Final Defects")
                 
+                all_csv_file = glob.glob(os.path.join(ControllerPath().folder_path_fd_noninline, "*.csv"))
+
+                ## Read File Csv  
+                df_list = [pd.read_csv(file) for file in all_csv_file] 
+                combined_df = pd.concat(df_list, ignore_index=True) 
+                output_file_1 = os.path.join(ControllerPath().folder_output_fd, f"Master_FD.csv")
+
+                ## Save Merge Result  
+                combined_df.to_csv(output_file_1, index=False) 
+
+                status_text = st.empty() 
+                status_text.text(f"✅ Sukses Melakukan Merge Pada Data Final Defects")
+
+                ## Drop Old File Before Created New File
+                if not os.path.exists(ControllerPath().folder_output_fpd): 
+                    os.makedirs(ControllerPath().folder_output_fpd) 
+                else : 
+                    for file_name in os.listdir(ControllerPath().folder_output_fpd):
+                        file_path = os.path.join(ControllerPath().folder_output_fpd, file_name)
+                        try : 
+                            if os.path.isfile(file_path): 
+                                os.remove(file_path) 
+
+                        except Exception as e : 
+                            st.error(f"Error in Processing Remove File First Pass Defects")
+                
+                all_csv_file = glob.glob(os.path.join(ControllerPath().folder_path_fpd, "*.csv"))
+
+                ## Read File Csv 
+                df_list = [pd.read_csv(file) for file in all_csv_file]
+                combined_df = pd.concat(df_list, ignore_index=True)
+                output_file_2 = os.path.join(ControllerPath().folder_output_fpd, f"Master_FPD.csv")
+
+                ## Save Merge Result 
+                combined_df.to_csv(output_file_2, index=False) 
+
+                status_text = st.empty()
+                status_text.text(f"✅ Sukses Melakukan Merge Pada Data First Pass Defects")
+
+                status_text = st.empty() 
+                status_text.text(f"✅ Sukses Membuat Reports, Silahkan Tekan Tombol Unduh Reports Untuk Mendapatkan File Reports!")
+
                 ## Read Database to Generate Reports
                 col_df1 = ['model', 'part_no', 'part_name', 'shift', 'tahun', 'bulan', 'tanggal', 'checked', 'ok', 'repair', 'scrap']
                 col_df2 = ['model', 'part_no', 'part_name', 'shift', 'total_repair', 'tahun', 'bulan', 'tanggal']

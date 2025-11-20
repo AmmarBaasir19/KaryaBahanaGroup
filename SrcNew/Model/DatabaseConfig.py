@@ -131,3 +131,5 @@ class DatabaseConfig:
         }
 
         return dtype_users_activity 
+    
+    

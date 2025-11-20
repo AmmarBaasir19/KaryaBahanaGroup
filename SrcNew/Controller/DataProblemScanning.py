@@ -66,13 +66,6 @@ class DataProblemScanning:
 
             ## Download File Problem 
             if ComponentsButton().button_error(merged_pdf, file_name, type_form): 
-                df_polygon_exe = SessionManager().get_setter_state(key='dataframe_polygon')
-                for i in SessionManager().get_setter_state(key='error_page'):
-                    df_polygon_exe = df_polygon_exe.drop(index=(i - 1))
-                    
-                st.write(f"Hai ini dataframe polygon setelah drop error page")
-                st.dataframe(df_polygon_exe)
-                SessionManager().set_setter_state(key='dataframe_polygon', value=df_polygon_exe) 
                 st.write(f"Done Download")
         
         except Exception as e : 

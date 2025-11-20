@@ -1,0 +1,228 @@
+cells:
+  - kind: 2
+    languageId: sql
+    value: SELECT * FROM bronze_layer.fd_noninline;
+    metadata: {}
+  - kind: 1
+    languageId: markdown
+    value: "#### **Make Calender Task Daily Database**"
+    metadata: {}
+  - kind: 1
+    languageId: markdown
+    value: "#### **1. With Subquery**"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "SELECT \r
+
+      \    DISTINCT title, production_date\r
+
+      FROM\r
+
+      \    (\r
+
+      \        SELECT \r
+
+      \            title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS
+      production_date\r
+
+      \        FROM\r
+
+      \            bronze_layer.fd_noninline\r
+
+      \        WHERE\r
+
+      \            title IS NOT NULL\r
+
+      \        \r
+
+      \        UNION ALL\r
+
+      \r
+
+      \        SELECT\r
+
+      \            title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS
+      production_date\r
+
+      \        FROM\r
+
+      \            bronze_layer.fpd\r
+
+      \        WHERE\r
+
+      \            title IS NOT NULL\r
+
+      \    ) AS combined_calender"
+    metadata: {}
+  - kind: 1
+    languageId: markdown
+    value: "#### **2. With CTE (Common Table Expresiion)**"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "WITH combined_calender AS (\r
+
+      \    SELECT \r
+
+      \        title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS
+      production_date\r
+
+      \    FROM\r
+
+      \        bronze_layer.fd_noninline\r
+
+      \    WHERE\r
+
+      \        title IS NOT NULL\r
+
+      \        \r
+
+      \    UNION ALL\r
+
+      \r
+
+      \    SELECT\r
+
+      \        title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS
+      production_date\r
+
+      \    FROM\r
+
+      \        bronze_layer.fpd\r
+
+      \    WHERE\r
+
+      \        title IS NOT NULL\r
+
+      )\r
+
+      \r
+
+      SELECT\r
+
+      \    DISTINCT title, production_date\r
+
+      FROM \r
+
+      \    combined_calender;"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "WITH Calender AS (\r
+
+      \    SELECT\r
+
+      \        title\r
+
+      FROM bronze_layer.fpd AS fpd \r
+
+      INNER JOIN bronze_layer.fd_noninline AS fd\r
+
+      \    ON fd.model = fpd.model\r
+
+      \    AND fd.part_no = fpd.part_no\r
+
+      \    AND fd.tahun = fpd.tahun\r
+
+      \    AND fd.bulan = fpd.bulan\r
+
+      \    AND fd.tanggal = fpd.tanggal\r
+
+      \    AND fd.shift = fpd.shift\r
+
+      )\r
+
+      \r
+
+      SELECT * FROM Calender;"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "SELECT\r
+
+      \    DISTINCT\r
+
+      \    title, MAKE_DATE(fpd.tahun::INT, fpd.bulan::INT, fpd.tanggal::INT) AS
+      production_date\r
+
+      FROM\r
+
+      \    bronze_layer.fd_noninline AS fd \r
+
+      INNER JOIN \r
+
+      \    bronze_layer.fpd AS fpd \r
+
+      \    ON fd.model = fpd.model\r
+
+      \    AND fd.part_no = fpd.part_no\r
+
+      \    AND fd.tahun = fpd.tahun\r
+
+      \    AND fd.bulan = fpd.bulan\r
+
+      \    AND fd.tanggal = fpd.tanggal\r
+
+      \    AND fd.shift = fpd.shift"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "## Calender for Firts Pass Defects\r
+
+      SELECT\r
+
+      \    DISTINCT\r
+
+      \    title, MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS
+      production_date\r
+
+      FROM\r
+
+      \    bronze_layer.fpd;"
+    metadata: {}
+  - kind: 1
+    languageId: markdown
+    value: "#### **Make Automatics Reports Database**"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "SELECT\r
+
+      \    model, part_no, part_name, shift, checked, ok, repair, scrap,
+      MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) AS production_date\r
+
+      FROM\r
+
+      \    bronze_layer.fd_noninline\r
+
+      WHERE\r
+
+      \    MAKE_DATE(tahun::INT, bulan::INT, tanggal::INT) = '2025-10-22';"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "ALTER TABLE fd_inline ALTER COLUMN ttd_kasie TYPE VARCHAR(10);\r
+
+      ALTER TABLE fd_inline ALTER COLUMN ttd_operator TYPE VARCHAR(10);\r
+
+      ALTER TABLE fd_inline ALTER COLUMN halaman TYPE VARCHAR(15);"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: "ALTER TABLE fd_noninline ALTER COLUMN ttd_kasie TYPE VARCHAR(10);\r
+
+      ALTER TABLE fd_noninline ALTER COLUMN halaman TYPE VARCHAR(15);\r
+
+      ALTER TABLE fd_noninline ALTER COLUMN ttd_operator TYPE VARCHAR(10);"
+    metadata: {}
+  - kind: 2
+    languageId: sql
+    value: GRANT ALL PRIVILEGES ON DATABASE kb_group TO ammar_ganteng
+    metadata: {}
+metadata:
+  conn:
+    id: SrPeE0RcpazzMxegKkfre
+    name: KaryaBahana_DB
+  database: kb_group
+  schema: bronze_layer

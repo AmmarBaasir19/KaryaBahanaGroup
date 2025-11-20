@@ -1,0 +1,291 @@
+{
+    "data_table" : {
+        "format_fd" : {
+            "table_1" : {
+                "len_columns" : 3,
+                "columns_name" : ["Model", "Part No", "Part Name"], 
+                "len_row" : 1 
+            },
+
+            "table_2" : {
+                "len_columns" : 7, 
+                "columns_name" : ["Ttd Kasie", "Ttd Operator", "Nik Operator", "Tahun", "Bulan", "Tanggal", "Shift"],
+                "len_row" : 1
+
+            }, 
+            "table_3" : {
+                "len_columns" : 4,
+                "columns_name" : ["Checked", "Ok", "Repair", "Scrap"], 
+                "len_row" : 1
+
+            }, 
+            "table_4" : {
+                "len_columns" : 7,
+                "columns_name" : ["Welding Check Points", "Keropos", "Kurang", "Bolong", "Undercut", "Spatter", "Tidak Tepat"],
+                "len_row" : 50
+            },
+
+            "table_5" : {
+                "len_columns" : 13,
+                "columns_name" : ["Folding Keras", "Karat", "Deformasi", "Cat/Coating", "Tidak Masuk Gonogo",
+                                "Step Loss", "Step Loncat", "Step Lebih", "Step Kurang", "Salah Pasang", "Goresan",
+                                "Noisy", "Tidak Lengkap"],
+                "len_row" : 1
+            }
+        },
+        "format_fpd" : {
+            "table_1" : {
+                "len_columns" : 5,
+                "columns_name" : ["Model", "Part No", "Part Name", "Part Group", "Shift"],
+                "len_row" : 1
+            },
+            "table_2" : {
+                "len_columns" : 8,
+                "columns_name" : ["Tahun", "Bulan", "Tanggal", "Nik/Nipm", "Total Repair", "Total Top", "Total Middle", "Total Bottom"], 
+                "len_row" : 1
+            }
+        }
+    }, 
+     
+    "directory_path" : [
+        {
+            "dir_path1" : {
+                "description_path" : "Path to Store Data Final Defects (FD Inline Repair)",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/FD_Inline_Repair"
+            },
+            "dir_path2" : { 
+                "description_path" : "Path to Store Data Final Defects (FD Noninlien Repair)",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/FD_Noninline_Repair"
+            },
+            "dir_path3" : {
+                "description_path" : "Path to Store Data Login Users",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/Data_Users"
+            },
+            "dir_path4" : { 
+                "description_path" : "Path to Choise Data for Generate Reports",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/Master_QC"  
+            },
+            "dir_path5" : {
+                "description_path" : "Path to Store Data First Pass Defects",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/First_Pass_Def"
+            },
+            "dir_path6" : {
+                "description_path" : "Path to Store Dataset After Merge",
+                "path" : "home/cortex/Medallion_Hub/Karya_Bahana_Apps/Dataset_Merge"
+            }
+        } 
+    ],
+    "data_part" : [
+        { 
+            "part_name" :
+                [ 
+                    "FIXING_FRM_RR_ASM", "FR_LINK_SUB_ASM_LH", "FR_LINK_SUB_ASM_RH", "FRM_ASM_2ND_AR_(WITH_CUP_HOLDER)",
+                    "FRM_ASM_2ND_AR_(WITHOUT_CUP_HOLDER)", "FRM_ASM_2NDB_LH_MIX", "FRM_ASM_2NDB_LH_NON_UN",
+                    "FRM_ASM_2NDB_LH_UN", "FRM_ASM_2NDB_RH_MIX", "FRM_ASM_2NDB_RH_HUN", "FRM_ASM_2NDB_RH_NON_UN",
+                    "FRM_ASM_2NDB_RH_UN", "FRM_ASM_2NDC_LH_MIX", "FRM_ASM_2NDC_LH_HUN", "FRM_ASM_2NDC_LH_HUN(26MY)",
+                    "FRM_ASM_2NDC_LH_NON_UN", "FRM_ASM_2NDC_LH_UN", "FRM_ASM_2NDC_LH_UN(26MY)", "FRM_ASM_2NDC_LH_UN",
+                    "FRM_ASM_2NDC_RH_MIX", "FRM_ASM_2NDC_RH_HUN", "FRM_ASM_2NDC_RH_HUN(26MY)", "FRM_ASM_2NDC_RH_NON_UN",
+                    "FRM_ASM_2NDC_RH_UN(26MY)", "FRM_ASM_2NDC_RH_UN", "FRM_ASM_2NDC_RH_UN", "FRM_ASM_3RDB_LH",
+                    "FRM_ASM_3RDB_LH(22MY)", "FRM_ASM_3RDB_RH", "FRM_ASM_3RDB_RH(22MY)", "FRM_ASM_3RDC_LH",
+                    "FRM_ASM_3RDC_RH", "FRM_ASM_FB_MNL_TABLE_LH", "FRM_ASM_FB_LH", "FRM_ASM_FB_LH_NON_UN",
+                    "FRM_ASM_FB_LH_UN", "FRM_ASM_FB_MNL_TABLE_RH", "FRM_ASM_FB_RH", "FRM_ASM_FB_RH_NON_UN",
+                    "FRM_ASM_FB_RH_UN", "FRM_ASM_RB_LH", "FRM_ASM_RB_RH", "FRM_ASM_RR_AR", "SECTOR_GEAR_SUB_ASM_LH",
+                    "SECTOR_GEAR_SUB_ASM_RH"
+                ],
+            "part_no" : 
+                [
+                    "M035T300", "M012S01A", "M011S01A", "M015U310", "M015U210", "M016T210-A", "M016T010-A",
+                    "M016T120-A", "M015T210-A", "M085T020", "M015T010-A", "M015T120-A", "M016S030", "M086S030",
+                    "M066S030", "M016S010", "M086S020", "M066S020", "M016S020", "M015S030", "M085S030", "M065S030",
+                    "M015S010", "M065S020", "M015S020", "M085S020", "M017T120", "M017T420", "M017T110", "M017T410",
+                    "M017S120", "M017S110", "M082T010", "M032T010", "M012T010", "M012T110", "M081T010", "M031T010",
+                    "M011T010", "M011T110", "M036T010", "M035T010", "M035U110", "M012S07A", "M011S07A"
+                ]
+        }
+    ],
+    "database_parts_check" : [
+        {
+            "4L45W" : {
+                "M017T110" : {
+                    "FRM_ASM_3RDB_RH" : 101
+                },
+                "M017T120" : {
+                    "FRM_ASM_3RDB_LH" : 101
+                },
+                "M017T410" : {
+                    "FRM_ASM_3RDB_RH(22MY)" : 91
+                },
+                "M017T420" : {
+                    "FRM_ASM_3RDB_LH(22MY)" : 91 
+                },
+                "M017S110" : {
+                    "FRM_ASM_3RDC_RH" : 51
+                },
+                "M017S120" : {
+                    "FRM_ASM_3RDC_LH" : 51
+                },
+                "M015S030" : {
+                    "FRM_ASM_2NDC_RH_MIX" : 71
+                },
+                "M016S030" : {
+                    "FRM_ASM_2NDC_LH_MIX" : 45
+                },
+                "M015S020" : {
+                    "FRM_ASM_2NDC_RH_UN" : 93
+                },
+                "M016S020" : {
+                    "FRM_ASM_2NDC_LH_UN" : 67
+                },
+                "M015S010" : {
+                    "FRM_ASM_2NDC_RH_NON_UN" : 57
+                },
+                "M016S010" : {
+                    "FRM_ASM_2NDC_LH_NON_UN" : 37
+                },
+                "M015T010-A" : {
+                    "FRM_ASM_2NDB_RH_NON_UN" : 73
+                },
+                "M016T010-A" : {
+                    "FRM_ASM_2NDB_LH_NON_UN" : 59
+                },
+                "M015T210-A" : {
+                    "FRM_ASM_2NDB_RH_MIX" : 56
+                },
+                "M016T210-A" : {
+                    "FRM_ASM_2NDB_LH_MIX" : 41
+                },
+                "M015T120-A" : {
+                    "FRM_ASM_2NDB_RH_UN" : 67
+                },
+                "M016T120-A" : {
+                    "FRM_ASM_2NDB_LH_UN" : 49
+                },
+                "M011T010" : {
+                    "FRM_ASM_FB_RH_NON_UN" : 26
+                },
+                "M012T010" : {
+                    "FRM_ASM_FB_LH_NON_UN" : 26
+                },
+                "M011T110" : {
+                    "FRM_ASM_FB_RH_UN" : 38
+                },
+                "M012T110" : {
+                    "FRM_ASM_FB_LH_UN" : 38
+                },
+                "M015U310" : {
+                    "FRM_ASM_2ND_AR_(WITH_CUP_HOLDER)" : 20
+                },
+                "M015U210" : {
+                    "FRM_ASM_2ND_AR_(WITHOUT_CUP_HOLDER)" : 19
+                },
+                "M011S07A" : {
+                    "SECTOR_GEAR_SUB_ASM_RH" : 8
+                },
+                "M012S07A" : {
+                    "SECTOR_GEAR_SUB_ASM_LH" : 8
+                },
+                "M011S01A" : {
+                    "FR_LINK_SUB_ASM_RH" : 7
+                },
+                "M012S01A" : {
+                    "FR_LINK_SUB_ASM_LH" : 7
+                },
+                "M065S030" : {
+                    "FRM_ASM_2NDC_RH_HUN(26MY)" : 73
+                },
+                "M066S030" : {
+                    "FRM_ASM_2NDC_LH_HUN(26MY)" : 45
+                },
+                "M065S020" : {
+                    "FRM_ASM_2NDC_RH_UN(26MY)" : 81
+                },
+                "M066S020" : {
+                    "FRM_ASM_2NDC_LH_UN(26MY)" : 51
+                }
+            },
+            "5H45" : {
+                "M035T010" : {
+                    "FRM_ASM_RB_RH" : 75
+                },
+                "M036T010" : {
+                    "FRM_ASM_RB_LH" : 61
+                },
+                "M035U110" : {
+                    "FRM_ASM_RR_AR" : 35
+                },
+                "M031T010" : {
+                    "FRM_ASM_FB_RH" : 35
+                },
+                "M032T010" : {
+                    "FRM_ASM_FB_LH" : 35
+                },
+                "M035T300" : {
+                    "FIXING_FRM_RR_ASM" : 114
+                }
+            },
+            "5J45" : {
+                "M081T010" : {
+                    "FRM_ASM_FB_MNL_TABLE_RH" : 38
+                },
+                "M082T010" : {
+                    "FRM_ASM_FB_MNL_TABLE_LH" : 38
+                },
+                "M085S020" : {
+                    "FRM_ASM_2NDC_RH_UN" : 88 
+                },
+                "M086S020" : {
+                    "FRM_ASM_2NDC_LH_UN" : 54
+                },
+                "M085S030" : {
+                    "FRM_ASM_2NDC_RH_HUN" : 71
+                },
+                "M086S030" : {
+                    "FRM_ASM_2NDC_LH_HUN" : 46
+                },
+                "M085T020" : {
+                    "FRM_ASM_2NDB_RH_HUN" : 63 
+                }
+            }
+        }
+    ],
+    "database_parts" : { 
+        "MODEL" : ["4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W",
+                    "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W",
+                    "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W", "4L45W",
+                    "4L45W", "4L45W", "5H45", "5H45", "5H45", "5H45", "5H45", "5H45", "5J45", "5J45",
+                    "5J45", "5J45", "5J45", "5J45", "5J45"], 
+
+        "PART NO" : ["M012S01A", "M011S01A", "M015U310", "M015U210", "M016T210-A", "M016T010-A", "M016T120-A", "M015T210-A", "M015T010-A", "M015T120-A",
+                    "M016S030", "M066S030", "M016S010", "M066S020", "M016S020", "M015S030", "M065S030", "M015S010", "M065S020", "M015S020",
+                    "M017T120", "M017T420", "M017T110", "M017T410", "M017S120", "M017S110", "M012T010", "M012T110", "M011T010", "M011T110",
+                    "M012S07A", "M011S07A", "M035T300", "M032T010", "M031T010", "M036T010", "M035T010", "M035U110", "M085T020",  "M086S030",
+                    "M086S020", "M085S030", "M085S020", "M082T010", "M081T010"],
+
+        "PART NAME" : ["FR_LINK_SUB_ASM_LH", "FR_LINK_SUB_ASM_RH", "FRM_ASM_2ND_AR_(WITH_CUP_HOLDER)", "FRM_ASM_2ND_AR_(WITHOUT_CUP_HOLDER)", "FRM_ASM_2NDB_LH_MIX",
+                        "FRM_ASM_2NDB_LH_NON_UN", "FRM_ASM_2NDB_LH_UN", "FRM_ASM_2NDB_RH_MIX", "FRM_ASM_2NDB_RH_NON_UN", "FRM_ASM_2NDB_RH_UN",
+                        "FRM_ASM_2NDC_LH_MIX", "FRM_ASM_2NDC_LH_HUN(26MY)", "FRM_ASM_2NDC_LH_NON_UN", "FRM_ASM_2NDC_LH_UN(26MY)", "FRM_ASM_2NDC_LH_UN",
+                        "FRM_ASM_2NDC_RH_MIX", "FRM_ASM_2NDC_RH_HUN(26MY)", "FRM_ASM_2NDC_RH_NON_UN", "FRM_ASM_2NDC_RH_UN(26MY)", "FRM_ASM_2NDC_RH_UN",
+                        "FRM_ASM_3RDB_LH", "FRM_ASM_3RDB_LH(22MY)", "FRM_ASM_3RDB_RH", "FRM_ASM_3RDB_RH(22MY)", "FRM_ASM_3RDC_LH",
+                        "FRM_ASM_3RDC_RH", "FRM_ASM_FB_LH_NON_UN", "FRM_ASM_FB_LH_UN", "FRM_ASM_FB_RH_NON_UN", "FRM_ASM_FB_RH_UN",
+                        "SECTOR_GEAR_SUB_ASM_LH", "SECTOR_GEAR_SUB_ASM_RH", "FIXING_FRM_RR_ASM", "FRM_ASM_FB_LH", "FRM_ASM_FB_RH",
+                        "FRM_ASM_RB_LH", "FRM_ASM_RB_RH", "FRM_ASM_RR_AR", "FRM_ASM_2NDB_RH_HUN", "FRM_ASM_2NDC_LH_HUN",
+                        "FRM_ASM_2NDC_LH_UN", "FRM_ASM_2NDC_RH_HUN", "FRM_ASM_2NDC_RH_UN", "FRM_ASM_FB_MNL_TABLE_LH", "FRM_ASM_FB_MNL_TABLE_RH"]
+    },  
+    "data_invalid" : { 
+        "invalid_type" : [
+            "Invalid Type 1", "Invalid Type 2", "Invalid Type 3", "Invalid Type 4", 
+            "Invalid Type 5", "Invalid Scanning", "Invalid Converted to INT"
+        ] 
+    },
+    "tampilkan_data" : {
+        "first_pass_yield" : "home/cortex/Medallion_Hub/KBU1/Quality Control Dept/First Pass Yield/Silver Data",
+        "final_yield" : "home/cortex/Medallion_Hub/KBU1/Quality Control Dept/Defect Tracker/Data/Bronze Data/kbu1_qc_final_yield_format_3_silver.csv"
+},
+    "login_data" :  [
+            {"username" : "adminqckbu1.com", "password" : "qc1kbgroup_", "role" : "admin", "location" : "KBU 1", "name" : "ERAWATI", "nik_nipm" : "U1438"},
+            {"username" : "adminqckbu1_qc.com", "password" : "qc1kbgroup_", "role" : "admin", "location" : "KBU 1", "name" : "KEYSHA ALYA", "nik_nipm" : "2307229"},
+            {"username" : "adminqckbu2.com", "password" : "qc2kbgroup_", "role" : "admin", "location" : "KBU 2", "name" : "Admin KBU2"},
+            {"username" : "adminqckbu3.com", "password" : "qc3kbgroup_", "role" : "admin", "location" : "KBU 2", "name" : "Admin KBU2"},
+            {"username" : "admin", "password" : "admin", "role" : "admin", "location" : "KBU 2", "name" : "Admin KBU3", "nik_nipm" : "111222"} 
+        ]
+}  

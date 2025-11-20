@@ -1,0 +1,14 @@
+#Apps Version
+apps :
+  name : Inline Repairs Apps
+  version : 1.0.0
+
+#Api Configuration
+api_adi :
+  keys_api: "3XggKiildVhYPsVVYVmF1PnVr6kgQ2YN4yTRCbv96PmjTJKTtOk7JQQJ99BEACqBBLyXJ3w3AAALACOGp6Xp" 
+  path_api: "https://qc-defect-tracker.cognitiveservices.azure.com/" 
+ 
+#List Fiture
+list_fiture : 
+  - upload file pdf
+  - dataframe manipulation

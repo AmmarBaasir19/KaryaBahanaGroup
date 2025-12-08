@@ -124,7 +124,7 @@ class DatabaseConfig:
     def connect_to_db(self):
         """"""
         try:
-            engine = create_engine('postgresql+psycopg2://airflow:airflow@10.10.0.154:5433/kb_group',
+            engine = create_engine('postgresql+psycopg2://airflow:aiflow@10.10.0.154:5433/kb_group',
                                     connect_args={'options': '-c search_path=bronze_layer'})
             connection = engine.connect()
             print("Connection to the database was successful.")

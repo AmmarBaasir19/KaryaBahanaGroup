@@ -304,8 +304,8 @@ class ComponentsUserInput:
             st.markdown("""
                 <div class="tooltip">❗
                     <span class="tooltiptext">
-                        <b>Informasi Halaman Buat Reports Secara Otomatis</b><br><br>
-                        • Pastikan Format Reports, Tanggal Mulai dan Tanggal Selesai terisi sesuai dengan kebutuhan anda, maka reports secara otomatis akan dibuat.<br>
+                        <b>Informasi Tombol Membuat Reports Otomatis Berdasarkan Tanggal</b><br><br>
+                        • Anda dapat mengisi Format Reports, Tanggal Mulai dan Tanggal Selesai ketika anda ingin membuat reports secara otomatis.<br>
                         • Pilih Tanggal Mulai dan Tanggal Selesai untuk menentukan reports akan dibuat pada rentang tanggal tertentu. <br>
                         • Pilih Format reports sesaui yang anda butuhkan. <br>
                             • <b>Format 1 : <b>Report Summary (Reports dibuat dengan tidak memperdulikan Shift) <br>

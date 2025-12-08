@@ -282,7 +282,7 @@ class ComponentsUserInput:
                                     value = date.today() + timedelta(days=7),
                                     key = "end_date")
 
-                if btn_format != "None" and str(btn_start) != (datetime.today().strftime('%Y-%m-%d')):
+                if btn_format != "None":
                     col_df1 = ['model', 'part_no', 'part_name', 'shift', 'tahun', 'bulan', 'tanggal', 'checked', 'ok', 'repair', 'scrap']
                     col_df2 = ['model', 'part_no', 'part_name', 'shift', 'total_repair', 'tahun', 'bulan', 'tanggal']
 
@@ -304,13 +304,13 @@ class ComponentsUserInput:
             st.markdown("""
                 <div class="tooltip">❗
                     <span class="tooltiptext">
-                        <b>Informasi Halaman Buat Reports Secara Otomatis</b><br><br>
-                        • Pastikan Format Reports, Tanggal Mulai dan Tanggal Selesai terisi sesuai dengan kebutuhan anda, maka reports secara otomatis akan dibuat.<br>
+                        <b>Informasi Tombol Membuat Reports Otomatis Berdasarkan Tanggal</b><br><br>
+                        • Anda dapat menekan tombol ini ketika anda ingin membuat reports secara otomatis.<br>
                         • Pilih Tanggal Mulai dan Tanggal Selesai untuk menentukan reports akan dibuat pada rentang tanggal tertentu. <br>
                         • Pilih Format reports sesaui yang anda butuhkan. <br>
                             • <b>Format 1 : <b>Report Summary (Reports dibuat dengan tidak memperdulikan Shift) <br>
                             • <b>Format 2 : <b> Report Detail (Reports dibuat dengan memperdulikan Shift) <br>
-                        • Tekan tombol <b>Unduh Reports<b> untuk mengunduh atau menyimpan reports yang sudah dibuat secara otomatis.
+                        • Tekan tombol <b>Buat Reports<b> untuk mulai membuat reports secara otomatsi.
                     </span>
                 </div>
                 """, unsafe_allow_html=True)

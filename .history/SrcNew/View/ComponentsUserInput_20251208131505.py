@@ -6,7 +6,6 @@ from SrcNew.Controller.ControllerPath import ControllerPath
 from SrcNew.Model.DatabaseConfig import DatabaseConfig
 from SrcNew.GenerateReports.MainAutomaticReports import MainAutomaticReports
 from SrcNew.GenerateReports.StylingReports import StylingReports
-from SrcNew.View.ComponentsButton import ComponentsButton 
 
 class ComponentsUserInput:
     def date_input(self):
@@ -265,7 +264,7 @@ class ComponentsUserInput:
         col1, col2 = st.columns([3, 0.2])
         with col1:
             with st.expander(label="📤 Tekan Untuk Membuat Reports Otomatis Berdasarkan Tanggal"):
-                rows = row([2,2,2], vertical_align="bottom")
+                rows = row([2,2,2,2], vertical_align="bottom")
                 btn_format = rows.selectbox(label='Pilih Format Reports :',
                                     options=["None"] + ["Format 1", "Format 2"],
                                     index=0,
@@ -281,8 +280,9 @@ class ComponentsUserInput:
                                     "Tanggal Selesai :",
                                     value = date.today() + timedelta(days=7),
                                     key = "end_date")
-
-                if btn_format != "None" and str(btn_start) != (datetime.today().strftime('%Y-%m-%d')):
+                
+                if btn_format != "None":
+                    ## Read Database to Generate Reports
                     col_df1 = ['model', 'part_no', 'part_name', 'shift', 'tahun', 'bulan', 'tanggal', 'checked', 'ok', 'repair', 'scrap']
                     col_df2 = ['model', 'part_no', 'part_name', 'shift', 'total_repair', 'tahun', 'bulan', 'tanggal']
 
@@ -297,23 +297,33 @@ class ComponentsUserInput:
 
                     ## Add Styling Reports
                     wb_final = StylingReports().run(wb, 1, len(wb.columns) - 3, 4, len(wb.columns) + 1, btn_format)
+                    excel_buffer = io.BytesIO()
+                    wb.save(excel_buffer)
+                    excel_buffer.seek(0)
 
-                    ComponentsButton().button_download_reports(wb_final, btn_start, btn_end)  
+                    btn_generate = rows.download_button(
+                        label="💾 Unduh Reports",
+                        data=excel_buffer,
+                        file_name=f"Reports_{btn_start}_{btn_end}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        use_container_width=True)
         
         with col2:
             st.markdown("""
                 <div class="tooltip">❗
                     <span class="tooltiptext">
-                        <b>Informasi Halaman Buat Reports Secara Otomatis</b><br><br>
-                        • Pastikan Format Reports, Tanggal Mulai dan Tanggal Selesai terisi sesuai dengan kebutuhan anda, maka reports secara otomatis akan dibuat.<br>
+                        <b>Informasi Tombol Membuat Reports Otomatis Berdasarkan Tanggal</b><br><br>
+                        • Anda dapat menekan tombol ini ketika anda ingin membuat reports secara otomatis.<br>
                         • Pilih Tanggal Mulai dan Tanggal Selesai untuk menentukan reports akan dibuat pada rentang tanggal tertentu. <br>
                         • Pilih Format reports sesaui yang anda butuhkan. <br>
                             • <b>Format 1 : <b>Report Summary (Reports dibuat dengan tidak memperdulikan Shift) <br>
                             • <b>Format 2 : <b> Report Detail (Reports dibuat dengan memperdulikan Shift) <br>
-                        • Tekan tombol <b>Unduh Reports<b> untuk mengunduh atau menyimpan reports yang sudah dibuat secara otomatis.
+                        • Tekan tombol <b>Buat Reports<b> untuk mulai membuat reports secara otomatsi.
                     </span>
                 </div>
                 """, unsafe_allow_html=True)
+
+        return btn_format, btn_start, btn_end, btn_generate 
 
     def manual_input(self):
         """"""

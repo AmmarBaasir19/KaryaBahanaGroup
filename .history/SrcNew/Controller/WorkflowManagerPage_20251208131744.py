@@ -35,7 +35,7 @@ class WorkflowManagerPage:
     def render_generate_reports(self): 
         """ This Function will be Processing Automatic Generate Reports """
         try : 
-            ComponentsUserInput().reports_input(label="Buat Reports")
+            val_format, val_start, val_end = ComponentsUserInput().reports_input(label="Buat Reports")
         
         except Exception as e : 
             st.error(f"Error in class WorkflowManagerPage (render_buat_reports) : {e}") 

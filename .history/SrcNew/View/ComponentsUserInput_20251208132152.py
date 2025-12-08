@@ -6,7 +6,6 @@ from SrcNew.Controller.ControllerPath import ControllerPath
 from SrcNew.Model.DatabaseConfig import DatabaseConfig
 from SrcNew.GenerateReports.MainAutomaticReports import MainAutomaticReports
 from SrcNew.GenerateReports.StylingReports import StylingReports
-from SrcNew.View.ComponentsButton import ComponentsButton 
 
 class ComponentsUserInput:
     def date_input(self):
@@ -282,38 +281,26 @@ class ComponentsUserInput:
                                     value = date.today() + timedelta(days=7),
                                     key = "end_date")
 
-                if btn_format != "None" and str(btn_start) != (datetime.today().strftime('%Y-%m-%d')):
-                    col_df1 = ['model', 'part_no', 'part_name', 'shift', 'tahun', 'bulan', 'tanggal', 'checked', 'ok', 'repair', 'scrap']
-                    col_df2 = ['model', 'part_no', 'part_name', 'shift', 'total_repair', 'tahun', 'bulan', 'tanggal']
-
-                    df1 = DatabaseConfig().get_database(start_date=btn_start, end_date=btn_end, db_name='fd_noninline', col_name=col_df1)
-                    #pd.read_csv(output_file_1, usecols=['Model', 'Part No', 'Part Name', 'Shift', 'Tahun', 'Bulan', 'Tanggal', 'Checked', 'Ok', 'Repair', 'Scrap'])
-
-                    df2 = DatabaseConfig().get_database(start_date=btn_start, end_date=btn_end, db_name='fpd', col_name=col_df2)
-                    #pd.read_csv(output_file_2, usecols=['Model', 'Part No', 'Part Name', 'Shift', 'Tahun', 'Bulan', 'Tanggal', 'Total Repair', 'Total Top', 'Total Middle', 'Total Bottom']) 
+                st.write(" ")
+                st.button(label="A")
                 
-                    ## Generate Reports
-                    wb = MainAutomaticReports().run(df1=df1, df2=df2, option=btn_format, start_date=btn_start, end_date=btn_end)
-
-                    ## Add Styling Reports
-                    wb_final = StylingReports().run(wb, 1, len(wb.columns) - 3, 4, len(wb.columns) + 1, btn_format)
-
-                    ComponentsButton().button_download_reports(wb_final, btn_start, btn_end)  
         
         with col2:
             st.markdown("""
                 <div class="tooltip">❗
                     <span class="tooltiptext">
-                        <b>Informasi Halaman Buat Reports Secara Otomatis</b><br><br>
-                        • Pastikan Format Reports, Tanggal Mulai dan Tanggal Selesai terisi sesuai dengan kebutuhan anda, maka reports secara otomatis akan dibuat.<br>
+                        <b>Informasi Tombol Membuat Reports Otomatis Berdasarkan Tanggal</b><br><br>
+                        • Anda dapat menekan tombol ini ketika anda ingin membuat reports secara otomatis.<br>
                         • Pilih Tanggal Mulai dan Tanggal Selesai untuk menentukan reports akan dibuat pada rentang tanggal tertentu. <br>
                         • Pilih Format reports sesaui yang anda butuhkan. <br>
                             • <b>Format 1 : <b>Report Summary (Reports dibuat dengan tidak memperdulikan Shift) <br>
                             • <b>Format 2 : <b> Report Detail (Reports dibuat dengan memperdulikan Shift) <br>
-                        • Tekan tombol <b>Unduh Reports<b> untuk mengunduh atau menyimpan reports yang sudah dibuat secara otomatis.
+                        • Tekan tombol <b>Buat Reports<b> untuk mulai membuat reports secara otomatsi.
                     </span>
                 </div>
                 """, unsafe_allow_html=True)
+
+        return btn_format, btn_start, btn_end
 
     def manual_input(self):
         """"""
